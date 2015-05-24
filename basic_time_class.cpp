@@ -1,15 +1,16 @@
-// This program demonstrates a simple class.
+// This program uses a class to represent time.
  #include <iostream>
  #include <cmath>
+ #include <string>
+ #include <cstdlib>
  using namespace std;
 
- // Circle class declaration
  class Time
  { 
  private:
  int minutes;
  int hours;
- string meridiem;
+ char meridiem;
 
 
  public:
@@ -18,39 +19,62 @@
  {
  	minutes = 0;
  	hours = 0;
- 	meridiem = "am";
+ 	meridiem = 'a';
  }
  
- void setTime(int hr, int min, string mer)
+ void setTime(int hr, int min, char mer)
  { minutes = min; 
    hours = hr;
    meridiem = mer;
    
  }
  int getMinutes()
- {
- 	return minutes;
- }
+  {return minutes;}
+
  int getHours()
- {
- 	return hours;
- }
- string getMeridiem()
- {
- 	return meridiem;
- }
+  {return hours;}
+  
+ char getMeridiem()
+  {return meridiem;}
+ 
+ void printTime()
+  {
+  if (minutes == 0)
+
+  {cout << "\nYou entered: \n\n" << hours << ":" << "00" << "" << meridiem << 'm';}
+  
+ else
+ 	{cout << "\nYou entered: \n\n" << hours << ":" << minutes << "" << meridiem << 'm';}
+  }
 };
  int main()
  {
  int hours;
  int minutes;
- string meridiem;
- cout << "Enter the time in hours, minutes, meridiem separated by a space (ex: 7 35 pm):\n";
- cin >> hours >> minutes >> meridiem;
+ char timer[6];
+ char meridiem;
+ cout << "Enter the time (ex: 11:32pm):\n";
+
+ cin >> timer;
+ string stuff = "12:34am";
+ 
+
+ if (timer[1]==':'){
+ 
+    hours = timer[0]-'0';
+    minutes = (timer[2]-'0')*10+(timer[3]-'0');
+    meridiem = timer[4];
+}
+    
+else{
+ hours = (timer[0]-'0')*10+(timer[1]-'0');
+ minutes = (timer[3]-'0')*10+(timer[4]-'0');
+ meridiem = timer[5];	
+}
+
  Time time1;
  time1.setTime(hours, minutes, meridiem);
- cout << "\nYou entered: \n\n" << time1.getHours() << ":" << time1.getMinutes() << "" << time1.getMeridiem();
- 
+ time1.printTime();
 
 
  return 0;
