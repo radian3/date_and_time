@@ -37,14 +37,18 @@
  char getMeridiem()
   {return meridiem;}
  
- void printTime()
+ 
+   void printTime()
   {
   if (minutes == 0)
 
-  {cout << "\nYou entered: \n\n" << hours << ":" << "00" << "" << meridiem << 'm';}
+  {cout << "\nYou entered: " << hours << ":" << "00" << meridiem << 'm' << "\n";}
+  
+  else if (minutes < 10)
+  {cout << "\nYou entered:  " << hours << ":" << "0" << minutes << meridiem << 'm' << "\n";}	
   
  else
- 	{cout << "\nYou entered: \n\n" << hours << ":" << minutes << "" << meridiem << 'm';}
+ 	{cout << "\nYou entered: " << hours << ":" << minutes << "" << meridiem << 'm' << "\n";}
   }
 };
  int main()
@@ -53,7 +57,7 @@
  int minutes;
  char timer[6];
  char meridiem;
- cout << "Enter the time (ex: 11:32pm):\n";
+ cout << "Enter the time (ex: 11:32pm): ";
 
  cin >> timer;
  string stuff = "12:34am";
