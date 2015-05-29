@@ -10,55 +10,39 @@
  private:
  int month;
  int day;
- char year;
+ int year;
 
 
  public:
  
  Date()
  {
- 	minutes = 0;
- 	hours = 0;
- 	meridiem = 'a';
+ 	month = 1;
+ 	day = 1;
+ 	year = 11;
  }
  
- void setTime(int hr, int min, char mer)
- { minutes = min; 
-   hours = hr;
-   meridiem = mer;
+ void setTime(int monthInput, int dayInput, int yearInput)
+ { month = monthInput; 
+   day = dayInput;
+   year = yearInput;
    
  }
- int getMinutes()
-  {return minutes;}
-
- int getHours()
-  {return hours;}
-  
- char getMeridiem()
-  {return meridiem;}
+ int getMonth()
+  {return month;}
  
- void printTime()
+ void printDate()
   {
-  if (minutes == 0)
-
-  {cout << "\nYou will finish at " << hours << ":" << "00" << meridiem << 'm' << "\n";}
-  
-  else if (minutes < 10)
-  {cout << "\nYou will finish at " << hours << ":" << "0" << minutes << meridiem << 'm' << "\n";}	
-  
- else
- 	{cout << "\nYou will finish at " << hours << ":" << minutes << "" << meridiem << 'm' << "\n";}
+  if (month < 10){
+  	cout << "0";
+  	cout << month;
+  }
+  else{
+  	cout << month;
   }
  
- void meridiemSwap(){
-  if (meridiem == 'a')
-  	{meridiem = 'p';}
-  
-  else
-  {meridiem = 'a';}
-  	
- }
  
+ /*
  void addTime(int hrs, int mins){
   if (hours == 12)
   {meridiemSwap();}
@@ -74,33 +58,23 @@
   if (hours == 12)
   	{meridiemSwap();}
   } 
-  
-  
+*/  
+}
 };
  int main()
  {
- int hours;
- int minutes;
- char timer[6];
- char meridiem;
- cout << "Enter the start time (ex: 11:32pm): ";
- cin >> timer;
- cout << "You entered " << timer << "\n"; 
- cout << "Type '0 0' without the quotes to exit at any time\n\n";
+ int monthValue;
+ int dayValue;
+ int yearValue;
+ char date[7];
+ 
+ cout << "Enter the start time (mm/dd/yy): ";
+ cin >> date;
+ cout << "You entered " << date << "\n"; 
+
  
 
- if (timer[1]==':'){
- 
-    hours = timer[0]-'0';
-    minutes = (timer[2]-'0')*10+(timer[3]-'0');
-    meridiem = timer[4];
-}
-    
-else{
- hours = (timer[0]-'0')*10+(timer[1]-'0');
- minutes = (timer[3]-'0')*10+(timer[4]-'0');
- meridiem = timer[5];	
-}
+ /*
 
  Time time1;
  time1.setTime(hours, minutes, meridiem);
@@ -117,6 +91,6 @@ else{
  
  time1.printTime();
 
-
+*/
  return 0;
  }
