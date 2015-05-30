@@ -109,7 +109,7 @@
  else
  {
  
- cout << "There are " << counter/365 << " years, " << (counter/365)/7 << " weeks, and " << (counter/365)%7 << " days between the two dates.";	
+ cout << "There are " << counter/365 << " years, " << (counter%365)/7 << " weeks, and " << (counter%365)%7 << " days between the two dates.";	
  }
  
  //
