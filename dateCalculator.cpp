@@ -1,4 +1,5 @@
-// This program uses a class to represent time.
+// input the start date and number of days
+// output is the end date
  #include <iostream>
  #include <cmath>
  #include <string>
@@ -40,7 +41,25 @@
   else{
   	cout << month;
   }
- 
+  cout << "/";
+  
+  if (day < 10){
+  	cout << "0";
+  	cout << day;
+  }
+  else{
+  	cout << day;
+  }
+  cout << "/";
+  
+  if (year < 10){
+  	cout << "0";
+  	cout << year;
+  }
+  else{
+  	cout << year;
+  }
+ }
  
  /*
  void addTime(int hrs, int mins){
@@ -59,18 +78,33 @@
   	{meridiemSwap();}
   } 
 */  
-}
+
 };
  int main()
  {
  int monthValue;
  int dayValue;
  int yearValue;
+ int addDays;
  char date[7];
  
  cout << "Enter the start time (mm/dd/yy): ";
  cin >> date;
- cout << "You entered " << date << "\n"; 
+ 
+ monthValue = 10*(date[0]-'0')+(date[1]-'0');
+ dayValue = 10*(date[3]-'0')+(date[4]-'0');
+ yearValue = 10*(date[6]-'0')+(date[7]-'0');
+ Date date1;
+ date1.setTime(monthValue, dayValue, yearValue);
+ 
+ cout << "Enter the amount of days to add: ";
+ cin >> addDays;
+ 
+ cout << "Adding " << addDays << " days to " << date << " gives us ";
+ date1.printDate();
+ 
+ 
+
 
  
 
