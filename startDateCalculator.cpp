@@ -68,10 +68,31 @@
   int daysLeft = day;
   while (true){
   
-  if (daysLeft >= daysToSub){
+  if (daysLeft > daysToSub){
   	day -= daysToSub;
-  	return;
+  	break;
   }
+  
+  
+  
+  
+  else if (daysLeft = daysToSub){
+  	month -= 1;
+  	if (month < 1){
+  		month = 12;
+  		year -= 1;
+  		if (year < 0){
+  			year = 99;
+		  }
+	  }
+	daysLeft = month[daylist];
+	day = daysLeft; 
+	break;
+  }
+  
+  
+  
+  
   else{
   	daysToSub -= daysLeft;
   	month -= 1;
