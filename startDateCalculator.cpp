@@ -1,5 +1,5 @@
-// input the start date and number of days
-// output is the end date
+// input the finish date and number of days
+// output is the start
  #include <iostream>
  #include <cmath>
  #include <string>
@@ -62,7 +62,7 @@
  }
  
  
- void addDays(int daysToAdd){
+ void subtractDays(int daysToAdd){
  
   int daylist[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
   int daysLeft = month[daylist]-day;
@@ -94,10 +94,10 @@
  int monthValue;
  int dayValue;
  int yearValue;
- int addDays;
+ int subDays;
  char date[8];
  
- cout << "Enter the start time (mm/dd/yy): ";
+ cout << "Enter the finish date (mm/dd/yy): ";
  cin >> date;
  
  monthValue = 10*(date[0]-'0')+(date[1]-'0');
@@ -106,13 +106,13 @@
  Date date1;
  date1.setTime(monthValue, dayValue, yearValue);
  
- cout << "Enter the amount of days to add: ";
- cin >> addDays;
- date1.addDays(addDays);
+ cout << "Enter the amount of days to subtract: ";
+ cin >> subDays;
+ date1.subtractDays(subDays);
  
  
  
- cout << "Adding " << addDays << " days to " << date << " gives us ";
+ cout << "Subtracting " << subDays << " days to " << date << " gives us a start on ";
  date1.printDate();
  
 
