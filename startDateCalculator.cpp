@@ -65,10 +65,10 @@
  void subtractDays(int daysToSub){
  
   int daylist[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-  int daysLeft = day;
+
   while (true){
   
-  if (daysLeft > daysToSub){
+  if (day > daysToSub){
   	day -= daysToSub;
   	break;
   }
@@ -76,7 +76,7 @@
   
   
   
-  else if (daysLeft = daysToSub){
+  else if (day = daysToSub){
   	month -= 1;
   	if (month < 1){
   		month = 12;
@@ -85,8 +85,7 @@
   			year = 99;
 		  }
 	  }
-	daysLeft = month[daylist];
-	day = daysLeft; 
+	day = month[daylist]; 
 	break;
   }
   
@@ -94,7 +93,7 @@
   
   
   else{
-  	daysToSub -= daysLeft;
+  	daysToSub -= day;
   	month -= 1;
   	if (month < 1){
   		month = 12;
@@ -103,8 +102,8 @@
   			year = 99;
 		  }
 	  }
-	daysLeft = month[daylist];
-	day = daysLeft; 
+
+	day = month[daylist]; 
   }
   
 }
