@@ -61,24 +61,33 @@
   }
  }
  
- /*
- void addTime(int hrs, int mins){
-  if (hours == 12)
-  {meridiemSwap();}
+ 
+ void addDays(int daysToAdd){
+ 
+  int daylist[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+  int daysLeft = month[daylist]-day;
+  while (true){
   
-  hours += hrs;
-  minutes += mins;
-  if (minutes >= 60){
-   hours += minutes/60;
-   minutes = minutes%60;}
-  if (hours > 12){
-  hours -= 12;
-  meridiemSwap();}
-  if (hours == 12)
-  	{meridiemSwap();}
-  } 
-*/  
-
+  if (daysLeft >= daysToAdd){
+  	day += daysToAdd;
+  	return;
+  }
+  else{
+  	daysToAdd -= daysLeft;
+  	day = 0;
+  	month += 1;
+  	if (month > 12){
+  		month = 1;
+  		year += 1;
+  		if (year > 99){
+  			year = 0;
+		  }
+	  }
+	daysLeft = month[daylist];  
+  }
+  
+}
+ }
 };
  int main()
  {
@@ -86,7 +95,7 @@
  int dayValue;
  int yearValue;
  int addDays;
- char date[7];
+ char date[8];
  
  cout << "Enter the start time (mm/dd/yy): ";
  cin >> date;
@@ -99,32 +108,12 @@
  
  cout << "Enter the amount of days to add: ";
  cin >> addDays;
+ date1.addDays(addDays);
+ 
  
  cout << "Adding " << addDays << " days to " << date << " gives us ";
  date1.printDate();
  
- 
 
-
- 
-
- /*
-
- Time time1;
- time1.setTime(hours, minutes, meridiem);
- int counter = 1;
- while (true){
- 
-  cout << "Enter amount of time for activity " << counter << " (ex: 1 23 for 1 hr 23 mins): ";
-  cin >> hours >> minutes;
-  if (hours == 0 and minutes == 0)
-  {break;}
-  time1.addTime(hours, minutes);
-  counter+=1;
-}
- 
- time1.printTime();
-
-*/
  return 0;
  }

@@ -1,4 +1,6 @@
-// This program uses a class to represent time.
+// This program tells you how early you need to start in order to finish or arrive on time
+// inputs: the desired finish time and time it will take to do the activities
+// output: the time that you must start at to finish everything
  #include <iostream>
  #include <cmath>
  #include <string>
