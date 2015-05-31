@@ -5,26 +5,27 @@
  #include <cstdlib>
  using namespace std;
 
- class Time
+ class Time // starting our class
  { 
- private:
- int minutes;
- int hours;
+ private: 
+ int hours,
+     minutes;
  char meridiem;
 
 
  public:
  
- Time()
+ Time() // constructor
  {
- 	minutes = 0;
  	hours = 0;
+  	minutes = 0;
  	meridiem = 'a';
  }
  
  void setTime(int hr, int min, char mer)
- { minutes = min; 
+ {  
    hours = hr;
+   minutes = min; 
    meridiem = mer;
    
  }
@@ -51,35 +52,37 @@
  	{cout << "\nYou entered: " << hours << ":" << minutes << "" << meridiem << 'm' << "\n";}
   }
 };
- int main()
- {
- int hours;
- int minutes;
- char timer[6];
- char meridiem;
+ 
+int main()
+{
+ int hours,
+     minutes;
+ 
+ char timer[7],
+      meridiem;
+ 
  cout << "Enter the time (ex: 11:32pm): ";
+ cin >> timer; 
 
- cin >> timer;
- string stuff = "12:34am";
+ if (timer[1]==':') // checking if the hours the user entered was 1-9
+ {
  
-
- if (timer[1]==':'){
- 
-    hours = timer[0]-'0';
-    minutes = (timer[2]-'0')*10+(timer[3]-'0');
-    meridiem = timer[4];
-}
+    hours = timer[0]-'0'; // computing the hours from the input
+    minutes = (timer[2]-'0')*10+(timer[3]-'0'); // computing the minutes from the input
+    meridiem = timer[4]; // exctracting the meridiem
+ }
     
-else{
+else // user entered 10, 11, or 12 as the hours
+ {
  hours = (timer[0]-'0')*10+(timer[1]-'0');
  minutes = (timer[3]-'0')*10+(timer[4]-'0');
  meridiem = timer[5];	
-}
+ }
 
- Time time1;
- time1.setTime(hours, minutes, meridiem);
- time1.printTime();
+ Time time1; // making an object named time1 out of the Time class
+ time1.setTime(hours, minutes, meridiem); // setting the time to the user input
+ time1.printTime(); // printing the time
 
 
  return 0;
- }
+}
