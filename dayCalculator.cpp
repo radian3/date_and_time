@@ -95,24 +95,26 @@
   }
  
  
- //
- cout << counter << "\n";
+ 
+
  if (counter < 7)
  {
  cout << "There are " << counter << " days between the two dates."; 
  }
  else if (counter < 365)
  {
- cout << "There are " << counter/7 << " weeks and " << counter%7 << " days between the two dates.";  	
+ cout << "There are " << counter/7 << " weeks and " << counter%7 << " days between the two dates." 
+ << "\nAlternatively, this was " << counter << " days total.";  	
  }
  
  else
  {
  
- cout << "There are " << counter/365 << " years, " << (counter%365)/7 << " weeks, and " << (counter%365)%7 << " days between the two dates.";	
+ cout << "There are " << counter/365 << " years, " << (counter%365)/7 << " weeks, and " << (counter%365)%7 << " days between the two dates."
+ << "\nAlternatively, this was " << counter << " days total.";  	
  }
  
- //
+ 
  
  
  }
