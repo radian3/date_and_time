@@ -1,9 +1,7 @@
 // input the start date and finish date
 // the output is the amount of days/weeks/years that passed by between the two inputted dates
  #include <iostream>
- #include <cmath>
  #include <string>
- #include <cstdlib>
  using namespace std;
 
  class Date

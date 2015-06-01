@@ -1,9 +1,8 @@
 // input the finish date and number of days
 // output is the start
  #include <iostream>
- #include <cmath>
  #include <string>
- #include <cstdlib>
+
  using namespace std;
 
  class Date

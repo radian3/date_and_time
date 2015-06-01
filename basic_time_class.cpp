@@ -1,8 +1,6 @@
 // This program uses a class to represent time.
  #include <iostream>
- #include <cmath>
  #include <string>
- #include <cstdlib>
  using namespace std;
 
  class Time // starting our class

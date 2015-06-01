@@ -2,9 +2,8 @@
 // inputs: the desired finish time and time it will take to do the activities
 // output: the time that you must start at to finish everything
  #include <iostream>
- #include <cmath>
  #include <string>
- #include <cstdlib>
+
  using namespace std;
 
  class Time

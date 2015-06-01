@@ -2,9 +2,8 @@
 // output: the time that your activities are anticipated to be done by
 
  #include <iostream>
- #include <cmath>
  #include <string>
- #include <cstdlib>
+
  using namespace std;
 
  class Time
