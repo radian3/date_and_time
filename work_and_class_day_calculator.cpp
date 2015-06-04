@@ -29,11 +29,31 @@
    
  }
  
- void printDays(int monthVal, int dayVal, int yearVal) // this function is for printing the amount of time between the two inputted dates
+ void printDays(int monthVal, int dayVal, int yearVal, char dayResponses[], int dayOfWeek) // this function is for printing the amount of time between the two inputted dates
  {
   int numDays = 0, // this variable counts the number of days between the two inputted dates
       daylist[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // amount of days in each month, giving garbage value for the first so the index is easier
  
+  int counter = 0;
+  int valueOfDays[8] = {0, 0, 0 , 0, 0, 0, 0, 0};
+ // cout << valueOfDays[1];
+  valueOfDays[0] = 0;
+  for (int i = 0; i < 7; i++)
+  {
+  	if (dayResponses[dayOfWeek-1] == 'y')
+  	{
+  		  
+		  counter += 1;
+	  }
+	valueOfDays[i+1] = counter;
+	dayOfWeek+=1;
+	if (dayOfWeek>7)
+	{
+		dayOfWeek = 1;
+	  }  
+  cout << valueOfDays[i] << " ";
+  }
+  cout << "\n\n" << valueOfDays << "\n\n";
   while (month != monthVal or year != yearVal) // we will keep iterating until we have the month and year correct, then we'll add the days after
   { 	
   	 numDays += month[daylist]-day; // adding the number of days left in the month to our counter
@@ -70,6 +90,10 @@
  cout << "There are " << numDays/365 << " years, " << (numDays%365)/7 << " weeks, and " << (numDays%365)%7 << " days between the two dates."
  << "\nAlternatively, this was " << numDays << " days total."; // printing the total day count incase the user wants that but it's a high number  	
  }
+ 
+ 
+ //cout << "\nThere are " << (numDays/7)*counter << " work during this time period.";
+ cout << "\nThere are " << (((numDays+1)/7)*counter) + (valueOfDays[(numDays+1)%7]) << " work or class days during this time period.\n" << counter;
  
  } // closing our printDays function
 
@@ -123,7 +147,7 @@
  cout << "\nEnter an integer representing the day of the week for the\nstart date (ex: 1 = Sunday, 2 = Monday, ... , 7 = Saturday): ";
  cin >> dayOfWeek;
  
- date1.printDays(months, days, years); // printing off the number of days between the date1 object and the input for the second date
+ date1.printDays(months, days, years, workOrClassDays, dayOfWeek); // printing off the number of days between the date1 object and the input for the second date
 
  return 0;
  }
