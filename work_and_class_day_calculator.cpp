@@ -51,9 +51,8 @@
 	{
 		dayOfWeek = 1;
 	  }  
-  cout << valueOfDays[i] << " ";
   }
-  cout << "\n\n" << valueOfDays << "\n\n";
+
   while (month != monthVal or year != yearVal) // we will keep iterating until we have the month and year correct, then we'll add the days after
   { 	
   	 numDays += month[daylist]-day; // adding the number of days left in the month to our counter
@@ -81,19 +80,19 @@
  
  else if (numDays < 365) // checking if the two dates were more than a week apart but less than a year apart
  {
- cout << "There are " << numDays/7 << " weeks and " << numDays%7 << " days between the two dates." // printing weeks and left over days from the last week
+ cout << "\nThere are " << numDays/7 << " weeks and " << numDays%7 << " days between the two dates." // printing weeks and left over days from the last week
  << "\nAlternatively, this was " << numDays << " days total."; // printing the total in days incase the user wants that information too 	
  }
  
  else // this means the user entered two dates that were a year or further apart
  { // we will print the years, left over weeks, and left over days apart
- cout << "There are " << numDays/365 << " years, " << (numDays%365)/7 << " weeks, and " << (numDays%365)%7 << " days between the two dates."
+ cout << "\nThere are " << numDays/365 << " years, " << (numDays%365)/7 << " weeks, and " << (numDays%365)%7 << " days between the two dates."
  << "\nAlternatively, this was " << numDays << " days total."; // printing the total day count incase the user wants that but it's a high number  	
  }
  
  
  //cout << "\nThere are " << (numDays/7)*counter << " work during this time period.";
- cout << "\nThere are " << (((numDays+1)/7)*counter) + (valueOfDays[(numDays+1)%7]) << " work or class days during this time period.\n" << counter;
+ cout << "\nThere are " << (((numDays+1)/7)*counter) + (valueOfDays[(numDays+1)%7]) << " work or class days during this time period.";
  
  } // closing our printDays function
 
