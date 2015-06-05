@@ -1,5 +1,5 @@
-// input the start date and finish date
-// the output is the amount of days/weeks/years that passed by between the two inputted dates
+// input the start date and finish date, days of week worked, hours per day worked, hourly wage
+// the output is the amount of days worked in this time and the salary earned
  #include <iostream>
  #include <string>
  using namespace std;
@@ -34,13 +34,13 @@
   int numDays = 0, // this variable counts the number of days between the two inputted dates
       daylist[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // amount of days in each month, giving garbage value for the first so the index is easier
  
-  int counter = 0;
-  int valueOfDays[8] = {0, 0, 0 , 0, 0, 0, 0, 0};
- // cout << valueOfDays[1];
-  valueOfDays[0] = 0;
+  int counter = 0; // will count the number of work days per week
+  int valueOfDays[8]; // number o work days at each stage in the week
+  valueOfDays[0] = 0; // we will disregard the first day incase there's 0 days left over after the weeks are calculated
+
   for (int i = 0; i < 7; i++)
   {
-  	if (dayResponses[dayOfWeek-1] == 'y')
+  	if (dayResponses[dayOfWeek-1] == 'y') // checking which days the user works
   	{
   		  
 		  counter += 1;
@@ -91,7 +91,7 @@
  }
  
  
- //cout << "\nThere are " << (numDays/7)*counter << " work during this time period.";
+
  cout << "\nThere are " << (((numDays+1)/7)*counter) + (valueOfDays[(numDays+1)%7]) << " work days during this time period earning a salary of $" << salary*hrs*(((numDays+1)/7)*counter) + (valueOfDays[(numDays+1)%7]);
  
  } // closing our printDays function
@@ -136,7 +136,7 @@
  //char response;
  string daysOfWeek[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
  char workOrClassDays[7];
- for (int i = 0; i < 7; i++ )
+ for (int i = 0; i < 7; i++ ) // checking which days the user works on
  {
  	cout << "Do you work on " << daysOfWeek[i] << " (y/n)? ";
  	cin >> workOrClassDays[i];

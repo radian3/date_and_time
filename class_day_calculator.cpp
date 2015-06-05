@@ -1,5 +1,5 @@
-// input the start date and finish date
-// the output is the amount of days/weeks/years that passed by between the two inputted dates
+// input the start date and finish date, days the class meets
+// the output is the amount of days that the class meets
  #include <iostream>
  #include <string>
  using namespace std;
@@ -34,20 +34,22 @@
   int numDays = 0, // this variable counts the number of days between the two inputted dates
       daylist[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // amount of days in each month, giving garbage value for the first so the index is easier
  
-  int counter = 0;
-  int valueOfDays[8] = {0, 0, 0 , 0, 0, 0, 0, 0};
- // cout << valueOfDays[1];
-  valueOfDays[0] = 0;
-  for (int i = 0; i < 7; i++)
+  int counter = 0; // used to count the number of class days per week
+  int valueOfDays[8]; // array storing the number of class days up to the day
+  valueOfDays[0] = 0; // setting the date for the first day to 0 incase there are 0 days
+  
+  for (int i = 0; i < 7; i++) // setting up our array that states how many class days there are up to each day of the week
   {
-  	if (dayResponses[dayOfWeek-1] == 'y')
+  	if (dayResponses[dayOfWeek-1] == 'y') // checking if the user has a class day on this day
   	{
   		  
-		  counter += 1;
+		  counter += 1; // if so we add to our counter
 	  }
-	valueOfDays[i+1] = counter;
-	dayOfWeek+=1;
-	if (dayOfWeek>7)
+
+	valueOfDays[i+1] = counter; // storing the amount of class days up to the day
+	dayOfWeek+=1; // going to the next day of the week
+
+	if (dayOfWeek>7) // if we get passed the last day of the week, go back to the first day
 	{
 		dayOfWeek = 1;
 	  }  
@@ -73,26 +75,12 @@
  
 // now ready to print our results below!
 
- if (numDays < 7) // checking if the two dates the user entered were less than a week apart
- {
- cout << "There are " << numDays << " days between the two dates."; // this means we only print the days
- }
- 
- else if (numDays < 365) // checking if the two dates were more than a week apart but less than a year apart
- {
- cout << "\nThere are " << numDays/7 << " weeks and " << numDays%7 << " days between the two dates." // printing weeks and left over days from the last week
- << "\nAlternatively, this was " << numDays << " days total."; // printing the total in days incase the user wants that information too 	
- }
- 
- else // this means the user entered two dates that were a year or further apart
- { // we will print the years, left over weeks, and left over days apart
- cout << "\nThere are " << numDays/365 << " years, " << (numDays%365)/7 << " weeks, and " << (numDays%365)%7 << " days between the two dates."
+
+
+ cout << "\nThere are " << (numDays%365)/7 << " weeks, and " << (numDays%365)%7 << " days between the two dates."
  << "\nAlternatively, this was " << numDays << " days total."; // printing the total day count incase the user wants that but it's a high number  	
- }
- 
- 
- //cout << "\nThere are " << (numDays/7)*counter << " work during this time period.";
- cout << "\nThere are " << (((numDays+1)/7)*counter) + (valueOfDays[(numDays+1)%7]) << " work or class days during this time period.";
+ // the number of class days will be the full number of weeks of class * the amount of days of class per week + the remaining left over class days (will be 0-6)
+ cout << "\nThere are " << (((numDays+1)/7)*counter) + (valueOfDays[(numDays+1)%7]) << " class days during this time period."; // printing number of class days
  
  } // closing our printDays function
 
@@ -135,18 +123,18 @@
 
  //char response;
  string daysOfWeek[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
- char workOrClassDays[7];
- for (int i = 0; i < 7; i++ )
+ char ClassDays[7];
+ for (int i = 0; i < 7; i++ ) // checking which day the user has class on
  {
- 	cout << "Do you work or have class on " << daysOfWeek[i] << " (y/n)? ";
- 	cin >> workOrClassDays[i];
+ 	cout << "Do you have class on " << daysOfWeek[i] << " (y/n)? ";
+ 	cin >> ClassDays[i];
  }
  
- int dayOfWeek;
+ int dayOfWeek; 
  cout << "\nEnter an integer representing the day of the week for the\nstart date (ex: 1 = Sunday, 2 = Monday, ... , 7 = Saturday): ";
  cin >> dayOfWeek;
  
- date1.printDays(months, days, years, workOrClassDays, dayOfWeek); // printing off the number of days between the date1 object and the input for the second date
+ date1.printDays(months, days, years, ClassDays, dayOfWeek); // printing off the number of days between the date1 object and the input for the second date
 
  return 0;
  }
