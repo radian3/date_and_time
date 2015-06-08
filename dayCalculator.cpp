@@ -36,7 +36,10 @@
  
   while (month != monthVal or year != yearVal) // we will keep iterating until we have the month and year correct, then we'll add the days after
   { 	
-  	 numDays += month[daylist]-day; // adding the number of days left in the month to our counter
+  	 if (month == 2 and (year%4==0) and (year==0 or (year+2000)%4==0) ) // checking if leap year and february
+	   {numDays += 29-day;} // if so, 29 days in the month
+	 else 
+	 {numDays += month[daylist]-day;}
   	 day = 0; // changing our day value to 0 since we added the number of days left to our counter
   	 month += 1; // adding our month to 0 since we made it to the next month by adding the days left in te month
   	 if (month > 12) // if we get to the "13th" month, we'll set back to the first month

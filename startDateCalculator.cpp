@@ -69,20 +69,7 @@
   	day -= daysToSub;
   	break;
   }
- /* 
-  if (day = daysToSub){ // special case for having 0 days left to avoid error
-  	month -= 1;
-  	if (month < 1){
-  		month = 12;
-  		year -= 1;
-  		if (year < 0){
-  			year = 99;
-		  }
-	  }
-	day = month[daylist]; 
-	break;
-  }
-  */
+
   else{ // more days left to subtract than what we have left in the month
   	daysToSub -= day;
   	month -= 1;
@@ -94,7 +81,11 @@
 		  }
 	  }
 
-	day = month[daylist]; // setting the day to the last day in the month
+    if (month == 2 and (year%4==0) and (year==0 or (year+2000)%4==0) ) // checking if leap year and february
+	   {day = 29;} // if so, 29 days in the month
+	 else 
+	 {day = month[daylist];}
+
   }
   
 } // done with the while loop

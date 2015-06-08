@@ -78,7 +78,11 @@
   			year = 0;
 		  }
 	  }
-	daysLeft = month[daylist];  // the amount of days left in the month is now the amount of days in the month since we set day = 0
+  
+    if (month == 2 and (year%4==0) and (year==0 or (year+2000)%4==0) ) // checking if leap year and february
+	   {daysLeft = 29-day;} // if so, 29 days in the month
+	 else 
+	 {daysLeft = month[daylist];}  
   
  } // closing the while loop
 
