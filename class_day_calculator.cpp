@@ -69,6 +69,9 @@
       daylist[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // amount of days in each month, giving garbage value for the first so the index is easier
   if (dayOfWeek == 0)
   {dayOfWeek = 7;}
+  
+  
+  
   int counter = 0; // used to count the number of class days per week
   int valueOfDays[8]; // array storing the number of class days up to the day
   valueOfDays[0] = 0; // setting the date for the first day to 0 incase there are 0 days
@@ -115,12 +118,11 @@
  
 // now ready to print our results below!
 
-
-
- cout << "\nThere are " << (numDays%365)/7 << " weeks, and " << (numDays%365)%7 << " days between the two dates."
+ 
+ cout << "\nThere are " << (numDays%365)/7 << " weeks and " << (numDays%365)%7 << " days between the two dates."
  << "\nAlternatively, this was " << numDays+1 << " days total (inclusive)."; // printing the total day count incase the user wants that but it's a high number  	
  // the number of class days will be the full number of weeks of class * the amount of days of class per week + the remaining left over class days (will be 0-6)
- cout << "\nThere are " << (((numDays+1)/7)*counter) + (valueOfDays[(numDays+1)%7]) << " class days during this time period."; // printing number of class days
+ cout << "\nThis class meets " << (((numDays+1)/7)*counter) + (valueOfDays[(numDays+1)%7]) << " times."; // printing number of class days
  
  } // closing our printDays function
 
@@ -143,7 +145,7 @@
  char date[8], // this will store the first date read in from the user
       secondDate[8]; // this will store the second date read in from the user
  
- cout << "Enter the start date (mm/dd/yy): "; // getting the user to input the first date
+ cout << "Enter the first day of the term (mm/dd/yy): "; // getting the user to input the first date
  cin >> date; // storing the date
  
  monthValue = 10*(date[0]-'0')+(date[1]-'0'); // computing the month, day, year from the format
@@ -154,7 +156,7 @@
  date1.setTime(monthValue, dayValue, yearValue); // setting the time to what the user entered
  
  
- cout << "Enter the finish date (mm/dd/yy): "; // getting the user to input the second date
+ cout << "Enter the last day of the term (mm/dd/yy): "; // getting the user to input the second date
  cin >> secondDate; // storing the second date
  
  months = 10*(secondDate[0]-'0')+(secondDate[1]-'0'); // computing the month, day, year from the format
@@ -166,7 +168,7 @@
  char ClassDays[7];
  for (int i = 0; i < 7; i++ ) // checking which day the user has class on
  {
- 	cout << "Do you have class on " << daysOfWeek[i] << " (y/n)? ";
+ 	cout << "Does this class meet on " << daysOfWeek[i] << " (y/n)? ";
  	cin >> ClassDays[i];
  }
  
@@ -174,7 +176,11 @@
  
  Date dateOfWeekBlock;
  dateOfWeekBlock.setTime(1, 1, 0);
- dayOfWeek = dateOfWeekBlock.getDayOfWeek(months, days, years);
+ dayOfWeek = dateOfWeekBlock.getDayOfWeek(monthValue, dayValue, yearValue);
+ dateOfWeekBlock.setTime(1, 1, 0);
+ string daysssOfWeek[7] = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+ cout << "\nIterating over " << daysssOfWeek[(dayOfWeek)%7] << " " << date << " to " << 
+ daysssOfWeek[dateOfWeekBlock.getDayOfWeek(months, days, years)%7] << " " << secondDate << "...";
  
  date1.printDays(months, days, years, ClassDays, dayOfWeek); // printing off the number of days between the date1 object and the input for the second date
 

@@ -40,7 +40,6 @@
   	 	numDays += 29-day;
 	   }
 	 else{
-	   
 	 numDays += month[daylist]-day; // adding the number of days left in the month to our counter
      }
 	 day = 0; // changing our day value to 0 since we added the number of days left to our counter
@@ -55,15 +54,7 @@
 	   }	 	
 	 }
   } // closing while loop
- 
  numDays += dayVal-day; // adding the days from the final month manually to our counter value
- 
-// now ready to print our results below!
-
-
- 
-
-  // we will print the years, left over weeks, and left over days apart
  cout  << daysOfWeek[(numDays%7)]; // printing the total day count incase the user wants that but it's a high number  	
  
  
