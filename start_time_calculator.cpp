@@ -71,9 +71,12 @@
 
   if (hours == 12) // if we ended at 12 hours, we swap the meridiem
   	{meridiemSwap();}
- 
-  } // done with the subtract time function
   
+  if (hours == 0){
+  	hours += 12;
+  }
+  
+  } // done with the subtract time function
   
 }; // done with the class definitions
 
