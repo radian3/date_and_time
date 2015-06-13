@@ -130,12 +130,15 @@ else{ // this means the user had double digit hours for input
 cout << "\nYou requested to exit. \nCalculating time each task must be started in order to finish by " << timer;
 cout << "...\n\n";
  
+ 
  for (int i = counter-1; i >= 0; i--)
  {
   time1.subtractTime(hrInp[i], minInp[i]);
   cout << "Task " << i+1 << " must be started at ";
   time1.printTime();	
  }
+ 
+ 
  
  //time1.printTime(); // printing out the start time necessary to finish at the desired finish time
 

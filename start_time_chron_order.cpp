@@ -53,6 +53,26 @@
   	
  }
  
+ void addTime(int hrs, int mins){ // used to add time to the current time of our time object
+  if (hours == 12) // the program needs to swap meridiems if the start is a 12 because if it ends at 12, it is going to swap the meridiem 
+  {meridiemSwap();} // and we dont want the meridiem being changed if it started so here it would be swapped twice which gets us what we started with
+  
+  hours += hrs; // adding in the hours that the user inputted
+  minutes += mins; // adding in the minutes that the user inputted
+ 
+  if (minutes >= 60){ // if we have too many minutes...
+   hours += minutes/60; // adding to our hours and setting our minutes to a valid value
+   minutes = minutes%60;}
+ 
+  if (hours > 12){ // if we have too many hours...
+  hours -= 12; // subtract 12 and swap the meridiem
+  meridiemSwap();}
+ 
+  if (hours == 12) // if we end with 12 hours, swap the meridiem swap
+  	{meridiemSwap();} // but what if we started at 12 and the hours didn't change? that is why we swapped it first so that this one undoes it
+ 
+  } // done with our addTime function 
+ 
  void subtractTime(int hrs, int mins){ // subtracting time from the current time
  
   if (hours == 12) // the program swap meridiems if it ends at 12, so if it starts at 12, we need to swap so it doesn't get confused
@@ -127,15 +147,24 @@ else{ // this means the user had double digit hours for input
   counter+=1; // adding to our counter to store the activity number
 }
 
-cout << "\nYou requested to exit. \nCalculating time each task must be started in order to finish by " << timer;
+cout << "\nYou requested to exit on task " << counter+1 << ". Thus there are " << counter << " tasks. \nCalculating time each task must be started in order to finish by " << timer;
 cout << "...\n\n";
  
- for (int i = counter-1; i >= 0; i--)
+ 
+ for (int i = 0; i <= counter-1; i++)
  {
   time1.subtractTime(hrInp[i], minInp[i]);
-  cout << "Task " << i+1 << " must be started at ";
-  time1.printTime();	
+  
  }
+ 
+ for (int i = 0; i <= counter-1; i++)
+ {
+  cout << "Task " << i+1 << " must be started at ";
+  time1.printTime();
+  time1.addTime(hrInp[i], minInp[i]);
+ }
+ 
+ 
  
  //time1.printTime(); // printing out the start time necessary to finish at the desired finish time
 
