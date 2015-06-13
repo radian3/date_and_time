@@ -1,4 +1,4 @@
-// This program tells you how early you need to start in order to finish or arrive on time
+// This program tells you how early you need to start each task in order to finish or arrive on time
 // inputs: the desired finish time and time it will take to do the activities
 // output: the time that you must start at to finish everything
  #include <iostream>
@@ -91,7 +91,7 @@
 
   if (hours == 12) // if we ended at 12 hours, we swap the meridiem
   	{meridiemSwap();}
-  if (hours == 0){
+  if (hours == 0){ // don't want to display 0 o'clock!
   	hours += 12;
   }	
  
@@ -143,7 +143,6 @@ else{ // this means the user had double digit hours for input
   if (hrInp[counter] == 0 and minInp[counter] == 0) // if activity takes 0 time, then assume the user wants to quit
   {break;} // exiting our while loop
  
-  //time1.subtractTime(hours, minutes); // subtracting off the time that the user inputted
   counter+=1; // adding to our counter to store the activity number
 }
 
@@ -151,23 +150,18 @@ cout << "\nYou requested to exit on task " << counter+1 << ". Thus there are " <
 cout << "...\n\n";
  
  
- for (int i = 0; i <= counter-1; i++)
+ for (int i = 0; i <= counter-1; i++) // calculating the time the first task needs to start by
  {
-  time1.subtractTime(hrInp[i], minInp[i]);
+  time1.subtractTime(hrInp[i], minInp[i]); // subtracting off the time for each task from the finish time
   
  }
  
- for (int i = 0; i <= counter-1; i++)
+ for (int i = 0; i <= counter-1; i++) // now going to output each start time
  {
   cout << "Task " << i+1 << " must be started at ";
-  time1.printTime();
-  time1.addTime(hrInp[i], minInp[i]);
+  time1.printTime(); // printing the time
+  time1.addTime(hrInp[i], minInp[i]); // adding the time for the 1st - nth task (one at a time)
  }
- 
- 
- 
- //time1.printTime(); // printing out the start time necessary to finish at the desired finish time
-
 
  return 0;
  }

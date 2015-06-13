@@ -123,7 +123,6 @@ else{ // this means the user had double digit hours for input
   if (hrInp[counter] == 0 and minInp[counter] == 0) // if activity takes 0 time, then assume the user wants to quit
   {break;} // exiting our while loop
  
-  //time1.subtractTime(hours, minutes); // subtracting off the time that the user inputted
   counter+=1; // adding to our counter to store the activity number
 }
 
@@ -131,17 +130,12 @@ cout << "\nYou requested to exit. \nCalculating time each task must be started i
 cout << "...\n\n";
  
  
- for (int i = counter-1; i >= 0; i--)
+ for (int i = counter-1; i >= 0; i--) // time to display results
  {
-  time1.subtractTime(hrInp[i], minInp[i]);
-  cout << "Task " << i+1 << " must be started at ";
-  time1.printTime();	
+  time1.subtractTime(hrInp[i], minInp[i]); // subtracting off the amount of time for task n, n-1, ... , 1 (one at a time) from the finish time
+  cout << "Task " << i+1 << " must be started at "; 
+  time1.printTime(); // printing the time after each subtraction
  }
  
- 
- 
- //time1.printTime(); // printing out the start time necessary to finish at the desired finish time
-
-
  return 0;
  }

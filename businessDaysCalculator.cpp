@@ -203,7 +203,7 @@ void printDate() // this will be used to print out the current date
  char date[8]; // this will store the first date read in from the user
 
  
- cout << "Enter the first day of the term (mm/dd/yy): "; // getting the user to input the first date
+ cout << "Enter date of day informed of busines day wait (mm/dd/yy): "; // getting the user to input the first date
  cin >> date; // storing the date
  
  monthValue = 10*(date[0]-'0')+(date[1]-'0'); // computing the month, day, year from the format
@@ -218,7 +218,7 @@ void printDate() // this will be used to print out the current date
  
 
  //char response;
- cout << "Enter the amount of days to add: "; // asking the user to put in the amount of days they are adding to get to the final date
+ cout << "Enter the amount of business days needed after the first date: "; // asking the user to put in the amount of days they are adding to get to the final date
  cin >> addDays;
  
  string daysOfWeek[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
@@ -228,12 +228,12 @@ void printDate() // this will be used to print out the current date
  int idx = 2;
  
  dayValues[0] = 0;
- char ClassDays[7];
+ char workDays[7];
  for (int i = 0; i < 7; i++ ) // checking which day the user has class on
  {
  	cout << "Is " << daysOfWeek[i] << " a business day (y/n)? ";
- 	cin >> ClassDays[i];
- 	if (ClassDays[i] == 'y')
+ 	cin >> workDays[i];
+ 	if (workDays[i] == 'y')
  	{
  		counterVal += 1;
 	 }
@@ -249,7 +249,7 @@ void printDate() // this will be used to print out the current date
  
  Date dateOfWeekBlock;
  dateOfWeekBlock.setTime(1, 1, 0);
- dayOfWeek = dateOfWeekBlock.getDayOfWeek(monthValue, dayValue, yearValue);
+ dayOfWeek = dateOfWeekBlock.getDayOfWeek(monthValue, dayValue, yearValue); // computing day of the week for the user input
  dateOfWeekBlock.setTime(1, 1, 0);
  string daysssOfWeek[7] = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
  
@@ -261,35 +261,34 @@ void printDate() // this will be used to print out the current date
  
  // start the index with the day of the week
  
- while (businessDayCounter < addDays)
+ while (businessDayCounter < addDays) // computing the total number of days that pass by during the business day period
  {
-  if (ClassDays[index] == 'y')
+  if (workDays[index] == 'y') // checking if a business day
   {
-  	businessDayCounter += 1;
+  	businessDayCounter += 1; // adding to the number of business days
 	  }	
-  totalDays += 1;
+  totalDays += 1; // adding to the total number of days in the time period
   index += 1;
-  if (index > 6)
+  if (index > 6) // checking if we reached the last day of the week
   {
-  	index = 0;
+  	index = 0; // resetting to the first day of the week
 		}	  
   } 
  
- int indexx = (dayOfWeek-1)%7;
+ int indexTwo = (dayOfWeek-1)%7; // getting the day of the week
  
  cout << "\n" ;
  
- if (ClassDays[indexx] != 'y')// if first day was not business day, sub 1
+ if (workDays[indexTwo] != 'y')// if first day was not business day, sub 1
  {
  	totalDays -= 1;
 
  }
  
  date1.addDays(totalDays); // adding in the days the user requested
- 
-// cout << "\n" << dayOfWeek << "\n" << ClassDays << "\n";
-
+ cout << "\nCalculating the date " << addDays << " business days after (not including) " << date << "...\n\n";
+ cout << "This time period will be complete at the end of the business day of ";
  date1.printDate();
- 
+ //cout << " will be the business day where the time period will have expired at the end of the day.";
  return 0;
  }
