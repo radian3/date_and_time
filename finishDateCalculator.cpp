@@ -62,8 +62,8 @@
  void addDays(int daysToAdd){ // this is used to add more days to the current date and will udpate the months/year if the days is more than whats in the month
  
   int daylist[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // array of days per month, giving a bogus value to the first index to make indexing easier
-  int daysLeft = month[daylist]-day; // amount of days left in the current month
-  
+  //int daysLeft = month[daylist]-day; // amount of days left in the current month
+  int daysLeft = daylist[month]-day;
   while (daysLeft < daysToAdd) // adding the days to our time class
   {
   	daysToAdd -= daysLeft; // subtracting off all of the days left in the month since there's still more days left to add
