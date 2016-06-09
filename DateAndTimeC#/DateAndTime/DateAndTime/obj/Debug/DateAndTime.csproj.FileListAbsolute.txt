@@ -1,0 +1,6 @@
+C:\Users\Andrew\Videos\classes\Algorithms\homework2\programming\DateAndTime\DateAndTime\bin\Debug\DateAndTime.exe.config
+C:\Users\Andrew\Videos\classes\Algorithms\homework2\programming\DateAndTime\DateAndTime\obj\Debug\DateAndTime.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Videos\classes\Algorithms\homework2\programming\DateAndTime\DateAndTime\bin\Debug\DateAndTime.exe
+C:\Users\Andrew\Videos\classes\Algorithms\homework2\programming\DateAndTime\DateAndTime\bin\Debug\DateAndTime.pdb
+C:\Users\Andrew\Videos\classes\Algorithms\homework2\programming\DateAndTime\DateAndTime\obj\Debug\DateAndTime.exe
+C:\Users\Andrew\Videos\classes\Algorithms\homework2\programming\DateAndTime\DateAndTime\obj\Debug\DateAndTime.pdb
